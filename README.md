@@ -28,7 +28,7 @@ Reinforcement learning is a powerful technique for training agents to make decis
 
 ## Read More
 
-You can read more about this project in the published paper: ([link-to-your-paper](https://ieeexplore.ieee.org/document/10718531)).
+You can read more about this project in the published paper: ([Click here to view the paper.](https://ieeexplore.ieee.org/document/10718531)).
 
 ## Requirements
 
