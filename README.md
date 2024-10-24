@@ -4,10 +4,11 @@
 
 - [Overview](#overview)
 - [Introduction](#introduction)
+- [Reinforcement Learning](#reinforcement-learning)
 - [Features](#features)
 - [Read More](#read-more)
 - [Requirements](#requirements)
-- [How to Use and Run the Code](#how-to-use-and-run-the-code)
+- [Working](#working)
 - [License](#license)
 
 ## Overview
@@ -17,6 +18,43 @@ This project simulates a taxi fleet operating in a dynamic environment using rei
 ## Introduction
 
 Reinforcement learning is a powerful technique for training agents to make decisions in complex environments. This project focuses on using Q-learning for a fleet of autonomous taxis that must learn to navigate efficiently, respond to passenger requests, and optimize their routes in real time.
+
+## Reinforcement Learning 
+
+- **Agent**: The taxi acts as the agent that interacts with the environment.
+- **Environment**: The graph structure where the taxis operate, consisting of nodes (locations) and edges (distances between locations).
+- **State**: A representation of the agent's current situation, including its location, whether it has a passenger, and the passenger's destination.
+- **Action**: The choices available to the agent, such as moving to a neighboring node, picking up a passenger, or dropping off a passenger.
+- **Reward**: Feedback from the environment that quantifies the effectiveness of the agent's action. Positive rewards are given for successful pickups and drop-offs, while negative rewards may be assigned for poor actions, such as moving to an undesirable location.
+
+### TaxiRLAgent Class
+- **Attributes**:
+  - `taxi_id`: Unique identifier for each taxi agent.
+  - `current_location`: Tracks the taxi's current position on the graph.
+  - `passenger`: Indicates if the taxi is currently carrying a passenger.
+  - `destination`: The drop-off location for the current passenger.
+  - `q_table`: A table storing Q-values for state-action pairs, which helps the agent determine the best action to take in a given state.
+
+- **Methods**:
+  - `get_state()`: Returns the current state of the taxi, which includes its location and passenger status.
+  - `choose_action(state)`: Uses an exploration-exploitation strategy to decide the next action:
+    - **Exploration**: The agent occasionally tries random actions to discover new strategies.
+    - **Exploitation**: The agent primarily chooses the action that it believes will yield the highest reward based on its Q-table.
+  - `update_q_table(state, action, reward, next_state)`: Updates the Q-table based on the reward received and the next state observed, using the Q-learning update rule.
+
+### Q-learning Update Rule
+The Q-learning algorithm updates the Q-values based on the Bellman equation:
+
+\[
+Q(s, a) \gets Q(s, a) + \alpha \left( r + \gamma \max_a Q(s', a) - Q(s, a) \right)
+\]
+
+Where:
+- \( Q(s, a) \) is the current Q-value for state \( s \) and action \( a \).
+- \( \alpha \) is the learning rate, controlling how much new information overrides old information.
+- \( r \) is the reward received after taking action \( a \).
+- \( \gamma \) is the discount factor, determining the importance of future rewards.
+- \( \max_a Q(s', a) \) is the maximum predicted Q-value for the next state \( s' \).
 
 ## Features
 
