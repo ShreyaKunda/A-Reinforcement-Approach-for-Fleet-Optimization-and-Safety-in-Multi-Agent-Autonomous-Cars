@@ -25,7 +25,7 @@ The project utilizes Q-learning, a popular model-free reinforcement learning alg
 ### State Space
 
 The state space for each taxi (agent) is defined as:
-\[ S = (\text{current location}, \text{passenger status}) \]
+\[ S = (text{current location}, \text{passenger status}) \]
 - **Current Location**: The node (location) where the taxi is currently positioned in the graph.
 - **Passenger Status**: A binary indicator showing whether the taxi is currently carrying a passenger.
 
@@ -59,7 +59,8 @@ Rewards are used to reinforce positive or negative behavior of the taxi agent du
 
 The environment simulates a graph structure representing locations and connections between them. Each taxi navigates through this environment based on the defined state, action, and reward framework.
 
-![Environment Visualization](![image](https://github.com/user-attachments/assets/f3fe2aac-5da2-4b81-b70e-7ff55c048086)
+![Environment Visualization](![image](![image](https://github.com/user-attachments/assets/c55948ed-4b3e-4326-a5dc-79ee20c45ca7)
+)
 )  <!-- Replace with the path to your environment image -->
 ## Working
 ### TaxiRLAgent Class
