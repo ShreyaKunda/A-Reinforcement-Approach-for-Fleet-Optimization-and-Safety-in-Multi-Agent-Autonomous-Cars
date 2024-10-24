@@ -28,7 +28,7 @@ Reinforcement learning is a powerful technique for training agents to make decis
 
 ## Read More
 
-You can read more about this project in the published paper: [Transcribing Natural Language To Python Code: A Compiler Based Approach](link-to-your-paper).
+You can read more about this project in the published paper: ([link-to-your-paper](https://ieeexplore.ieee.org/document/10718531)).
 
 ## Requirements
 
