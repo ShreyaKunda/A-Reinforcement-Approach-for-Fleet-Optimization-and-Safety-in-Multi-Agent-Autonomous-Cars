@@ -20,13 +20,48 @@ This project simulates a taxi fleet operating in a dynamic environment using rei
 Reinforcement learning is a powerful technique for training agents to make decisions in complex environments. This project focuses on using Q-learning for a fleet of autonomous taxis that must learn to navigate efficiently, respond to passenger requests, and optimize their routes in real time.
 
 ## Reinforcement Learning 
+The project utilizes Q-learning, a popular model-free reinforcement learning algorithm, to train the taxi agents. Below are the key aspects of the RL implementation:
 
-- **Agent**: The taxi acts as the agent that interacts with the environment.
-- **Environment**: The graph structure where the taxis operate, consisting of nodes (locations) and edges (distances between locations).
-- **State**: A representation of the agent's current situation, including its location, whether it has a passenger, and the passenger's destination.
-- **Action**: The choices available to the agent, such as moving to a neighboring node, picking up a passenger, or dropping off a passenger.
-- **Reward**: Feedback from the environment that quantifies the effectiveness of the agent's action. Positive rewards are given for successful pickups and drop-offs, while negative rewards may be assigned for poor actions, such as moving to an undesirable location.
+### State Space
 
+The state space for each taxi (agent) is defined as:
+\[ S = (\text{current location}, \text{passenger status}) \]
+- **Current Location**: The node (location) where the taxi is currently positioned in the graph.
+- **Passenger Status**: A binary indicator showing whether the taxi is currently carrying a passenger.
+
+### Action Space
+
+The action space defines the actions that a taxi can take in each state. In this simulation, the action space is defined as:
+\[ A = \text{each taxi moving to its neighboring nodes (locations) on the graph} \]
+
+### Rewards
+
+Rewards are used to reinforce positive or negative behavior of the taxi agent during its interactions with the environment. In this simulation:
+- **Movement Reward**: Each step taken by the taxi incurs a small negative reward (typically -1).
+- **Pickup Reward**: The taxi receives a positive reward (typically +10) when it successfully picks up a passenger.
+- **Drop-off Reward**: The taxi receives a positive reward (typically +20) when it successfully drops off a passenger.
+
+### Our Approach: Q-Learning
+
+- **Model-free, Off-policy Learning**: The taxis learn like curious explorers, constantly updating their knowledge.
+- **Q-value Update**: The Q-value for a state-action pair is updated using the Bellman equation:
+  \[
+  Q(s, a) \leftarrow Q(s, a) + \alpha \cdot \left[ r + \gamma \cdot \max_{a'} Q(s', a') - Q(s, a) \right]
+  \]
+  
+- **Q-Table**: Each taxi agent maintains a Q-table where it stores Q-values for each state-action pair it encounters during the simulation.
+
+- **Learning Rate (α)**: Controls how much the agent updates its Q-values in response to new information. Set at **0.1**.
+
+- **Discount Factor (γ)**: Determines the importance of future rewards. A lower discount factor makes the agent focus more on immediate rewards, while a higher discount factor values future rewards more. Set at **0.9**.
+
+### Environment
+
+The environment simulates a graph structure representing locations and connections between them. Each taxi navigates through this environment based on the defined state, action, and reward framework.
+
+![Environment Visualization](![image](https://github.com/user-attachments/assets/f3fe2aac-5da2-4b81-b70e-7ff55c048086)
+)  <!-- Replace with the path to your environment image -->
+## Working
 ### TaxiRLAgent Class
 - **Attributes**:
   - `taxi_id`: Unique identifier for each taxi agent.
@@ -63,6 +98,9 @@ Where:
 - **Graph-Based Navigation**: Taxis operate in a graph environment with nodes and edges representing locations and distances.
 - **Visualization**: The simulation includes a visual representation of the graph, taxis, requests, and their movements.
 - **Video Compilation**: Frames from the simulation are compiled into a video for easier analysis.
+
+## Observation and Simulation
+
 
 ## Read More
 
